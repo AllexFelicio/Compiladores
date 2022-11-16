@@ -12,6 +12,7 @@ T_IDENTIF = "<ID %s>"
 #seleciona o exercicio para testar analisadores
 exercicio='ex2.x'
 
+#regex para identificação lexica
 regex=re.compile(r"^[a-zA-Z].*$")
 regex_num=re.compile(r"^[0-9]+$")
 regex_letra=re.compile(r"^[a-zA-Z]+$")
@@ -19,8 +20,8 @@ regex_string= re.compile(r'"(.*?)"')
 regex_op=re.compile(r"!?=|[<>]=?")
 regex_mat=re.compile(r"(\\d*|[+*/().-]|np\\d+|\\s+)*")
 
-def afd_principal(token):
-    
+#função lexica
+def afd_principal(token):    
     if token == "palavra$":
         return T_KEYWORDS_RESERVADO[0]
     elif token =="numero$":
@@ -45,7 +46,8 @@ def afd_principal(token):
         return T_STRING % token
 
     return None
-    
+
+#main
 arquivo = open(exercicio,'r')
 for l in arquivo.readlines():
     l = l.replace('\n','') # remove a quebra de linha
@@ -56,10 +58,13 @@ for l in arquivo.readlines():
     result_lexico.write(str(tokens)+'\n')        
     print(tokens)
 result_lexico.close()
+#-----------------------
 
+#função sintatica
 resposta = sin.teste_sintatico("result.txt")
 os.remove("result.txt")
 
+#Caso não de erro no sintatico faz as operações lidas
 if(resposta==True):
     arquivo.close()
     arquivo = open(exercicio,'r')
@@ -67,12 +72,13 @@ if(resposta==True):
     aux_valor=[]
 
     for j in arquivo.readlines():
-        j = j.replace('\n','') # remove a quebra de linha
+        j = j.replace('\n','') 
         for token in j.split():
             if re.fullmatch(regex_num,token):
                 aux_valor.append(token)      
             elif re.fullmatch(regex_mat,token):
                 aux_simbolo=token
+                
 #aux para fazer contas
     mult=1
     soma=0
@@ -87,8 +93,7 @@ if(resposta==True):
         print("Produto: "+str(mult))
     if(aux_simbolo=="+"):
         print("Soma: ",soma)
-
-
+#--------------------
 
 
 
