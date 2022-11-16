@@ -1,5 +1,5 @@
 # Compiladores
 
 
--Analisador Lexico Ok.
--Analisador Sintatico em processo.
+-Analisador Lexico Ok.\n
+-Analisador Sintatico em processo.\n
