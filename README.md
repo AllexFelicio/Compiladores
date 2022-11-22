@@ -47,7 +47,7 @@ Estrutura de repetição:
 Declaração e uso de funções:
     - Classe povo numero nomefunção(){}
     - Classe aviaozinho palavra nomefunção(){} (privado)
-
+##
 ## ***Para alterar os exercicos basta mudar o nome da string na linha 13 do arquivo lexico.py***
 
 Exercicio 1:
